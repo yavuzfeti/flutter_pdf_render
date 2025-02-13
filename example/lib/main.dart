@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart'
     show kIsWeb; // for checking whether running on Web or not
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:pdf_render/pdf_render.dart';
-import 'package:pdf_render/pdf_render_widgets.dart';
+import 'package:pdf_render_plus/pdf_render.dart';
+import 'package:pdf_render_plus/pdf_render_widgets.dart';
 
 void main(List<String> args) => runApp(const MyApp());
 
@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: ValueListenableBuilder<Matrix4>(
-              // The controller is compatible with ValueListenable<Matrix4> and you can receive notifications on scrolling and zooming of the view.
+            // The controller is compatible with ValueListenable<Matrix4> and you can receive notifications on scrolling and zooming of the view.
               valueListenable: controller,
               builder: (context, _, child) => Text(controller.isReady
                   ? 'Page #${controller.currentPageNumber}'
@@ -49,30 +49,30 @@ class _MyAppState extends State<MyApp> {
           child: Stack(
             children: [
               !kIsWeb && Platform.isMacOS
-                  // Networking sample using flutter_cache_manager
+              // Networking sample using flutter_cache_manager
                   ? PdfViewer.openFutureFile(
-                      // Accepting function that returns Future<String> of PDF file path
-                      () async => (await DefaultCacheManager().getSingleFile(
-                              'https://github.com/espresso3389/flutter_pdf_render/raw/master/example/assets/hello.pdf'))
-                          .path,
-                      viewerController: controller,
-                      onError: (err) => print(err),
-                      params: const PdfViewerParams(
-                        padding: 10,
-                        minScale: 1.0,
-                        // scrollDirection: Axis.horizontal,
-                      ),
-                    )
+                // Accepting function that returns Future<String> of PDF file path
+                    () async => (await DefaultCacheManager().getSingleFile(
+                    'https://github.com/espresso3389/flutter_pdf_render/raw/master/example/assets/hello.pdf'))
+                    .path,
+                viewerController: controller,
+                onError: (err) => print(err),
+                params: const PdfViewerParams(
+                  padding: 10,
+                  minScale: 1.0,
+                  // scrollDirection: Axis.horizontal,
+                ),
+              )
                   : PdfViewer.openAsset(
-                      'assets/hello.pdf',
-                      viewerController: controller,
-                      onError: (err) => print(err),
-                      params: const PdfViewerParams(
-                        padding: 10,
-                        minScale: 1.0,
-                        // scrollDirection: Axis.horizontal,
-                      ),
-                    ),
+                'assets/hello.pdf',
+                viewerController: controller,
+                onError: (err) => print(err),
+                params: const PdfViewerParams(
+                  padding: 10,
+                  minScale: 1.0,
+                  // scrollDirection: Axis.horizontal,
+                ),
+              ),
               // Simple scroll position indicator
               ValueListenableBuilder(
                 valueListenable: controller,
@@ -121,7 +121,7 @@ class _MyAppState extends State<MyApp> {
     final PdfDocument doc;
     if (!kIsWeb && Platform.isMacOS) {
       final file = (await DefaultCacheManager().getSingleFile(
-              'https://github.com/espresso3389/flutter_pdf_render/raw/master/example/assets/hello.pdf'))
+          'https://github.com/espresso3389/flutter_pdf_render/raw/master/example/assets/hello.pdf'))
           .path;
       doc = await PdfDocument.openFile(file);
     } else {

@@ -1,3 +1,7 @@
+## 1.4.13
+
+- Fixed an error when using the "Registrar"
+
 ## 1.4.12
 
 - Merge PR #148 to handle click outside page view
