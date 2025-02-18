@@ -1,3 +1,7 @@
+## 1.4.15
+
+- iOS build bug fixed
+
 ## 1.4.14
 
 - Fixed an error when using the ios build
