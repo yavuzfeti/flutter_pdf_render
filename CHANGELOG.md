@@ -1,3 +1,7 @@
+## 1.4.14
+
+- Fixed an error when using the ios build
+
 ## 1.4.13
 
 - Fixed an error when using the "Registrar"

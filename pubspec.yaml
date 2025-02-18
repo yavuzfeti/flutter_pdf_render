@@ -1,6 +1,6 @@
 name: pdf_render_plus
 description: A plugin that provides you with intermediate PDF rendering APIs and easy-to-use Flutter Widgets.
-version: 1.4.13
+version: 1.4.14
 homepage: https://github.com/yavuzfeti/flutter_pdf_render
 
 environment:
